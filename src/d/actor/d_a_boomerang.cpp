@@ -139,18 +139,19 @@ void daBoomerang_blur_c::draw() {
 
     GFLoadPosMtxImm(j3dSys.getViewMtx(), GX_PNMTX0);
 
-#define QUAD_VTX(xyz, u, v)                                                                                                                                    \
-    GFPosition3f32((xyz).x, (xyz).y, (xyz).z);                                                                                                                 \
-    GFTexCoord2s16((u), (v))
-
+    // Draw trail 0.
     {
         GFBegin(GX_QUADS, GX_VTXFMT0, numTrailSegments * 4 + 4);
 
         for (int i = numTrailSegments; i >= 0; i--) {
-            QUAD_VTX(trail0_vtxArr0[i], uCoord1, 0x00);
-            QUAD_VTX(trail0_vtxArr1[i], uCoord1, 0xFF);
-            QUAD_VTX(trail0_vtxArr1[i + 1], uCoord0, 0xFF);
-            QUAD_VTX(trail0_vtxArr0[i + 1], uCoord0, 0x00);
+            GFPosition3f32(trail0_vtxArr0[i].x, trail0_vtxArr0[i].y, trail0_vtxArr0[i].z);
+            GFTexCoord2s16(uCoord1, 0x00);
+            GFPosition3f32(trail0_vtxArr1[i].x, trail0_vtxArr1[i].y, trail0_vtxArr1[i].z);
+            GFTexCoord2s16(uCoord1, 0xFF);
+            GFPosition3f32(trail0_vtxArr1[i + 1].x, trail0_vtxArr1[i + 1].y, trail0_vtxArr1[i + 1].z);
+            GFTexCoord2s16(uCoord0, 0xFF);
+            GFPosition3f32(trail0_vtxArr0[i + 1].x, trail0_vtxArr0[i + 1].y, trail0_vtxArr0[i + 1].z);
+            GFTexCoord2s16(uCoord0, 0x00);
 
             uCoord0 = uCoord1;
             uCoord1 += uCoordStep;
@@ -159,6 +160,7 @@ void daBoomerang_blur_c::draw() {
         GFEnd();
     }
 
+    // Draw trail 1.
     {
         uCoord1 = uCoordStep;
         uCoord0 = 0;
@@ -166,10 +168,14 @@ void daBoomerang_blur_c::draw() {
         GFBegin(GX_QUADS, GX_VTXFMT0, numTrailSegments * 4 + 4);
 
         for (int i = numTrailSegments; i >= 0; i--) {
-            QUAD_VTX(trail1_vtxArr0[i], uCoord1, 0x00);
-            QUAD_VTX(trail1_vtxArr1[i], uCoord1, 0xFF);
-            QUAD_VTX(trail1_vtxArr1[i + 1], uCoord0, 0xFF);
-            QUAD_VTX(trail1_vtxArr0[i + 1], uCoord0, 0x00);
+            GFPosition3f32(trail1_vtxArr0[i].x, trail1_vtxArr0[i].y, trail1_vtxArr0[i].z);
+            GFTexCoord2s16(uCoord1, 0x00);
+            GFPosition3f32(trail1_vtxArr1[i].x, trail1_vtxArr1[i].y, trail1_vtxArr1[i].z);
+            GFTexCoord2s16(uCoord1, 0xFF);
+            GFPosition3f32(trail1_vtxArr1[i + 1].x, trail1_vtxArr1[i + 1].y, trail1_vtxArr1[i + 1].z);
+            GFTexCoord2s16(uCoord0, 0xFF);
+            GFPosition3f32(trail1_vtxArr0[i + 1].x, trail1_vtxArr0[i + 1].y, trail1_vtxArr0[i + 1].z);
+            GFTexCoord2s16(uCoord0, 0x00);
 
             uCoord0 = uCoord1;
             uCoord1 += uCoordStep;
