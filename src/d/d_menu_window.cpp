@@ -1168,7 +1168,7 @@ static BOOL dMs_Execute(sub_ms_screen_class* i_Ms) {
 
     } else if (i_Ms->mMenuProc == MENU_STATE_COLLECT_MOVE) {
         cloth_c->cloth_move();
-        if ((CPad_CHECK_TRIG_START(0) || CPad_CHECK_TRIG_B(0)) && !dMc_c->noteCheck() && (dMc_c->mCollectMode == 0 || dMc_c->mCollectMode == 2)) {
+        if ((CPad_CHECK_TRIG_START(0) || CPad_CHECK_TRIG_B(0)) && !dMc_c->noteCheck() && (dMc_c->getCollectMode() == 0 || dMc_c->getCollectMode() == 2)) {
 
             cloth_c->alpha_out();
             mDoExt_setCurrentHeap(i_Ms->childHeap);
@@ -1178,7 +1178,7 @@ static BOOL dMs_Execute(sub_ms_screen_class* i_Ms) {
             dMenu_setPushMenuButton(0);
             mDoAud_seStart(JA_SE_ITM_MENU_OUT);
 
-        } else if (dMs_isPush_R_Button(i_Ms) && !dMc_c->noteCheck() && (dMc_c->mCollectMode == 0 || dMc_c->mCollectMode == 2)) {
+        } else if (dMs_isPush_R_Button(i_Ms) && !dMc_c->noteCheck() && (dMc_c->getCollectMode() == 0 || dMc_c->getCollectMode() == 2)) {
 
             mDoExt_setCurrentHeap(i_Ms->childHeap);
             i_Ms->mMenuProc = MENU_STATE_COLLECT_TO_ITEM_RIGHT;
@@ -1187,7 +1187,7 @@ static BOOL dMs_Execute(sub_ms_screen_class* i_Ms) {
             dMenu_setPushMenuButton(1);
             mDoAud_seStart(JA_SE_ITEM_COL_SW);
 
-        } else if (dMs_isPush_L_Button(i_Ms) && !dMc_c->noteCheck() && (dMc_c->mCollectMode == 0 || dMc_c->mCollectMode == 2)) {
+        } else if (dMs_isPush_L_Button(i_Ms) && !dMc_c->noteCheck() && (dMc_c->getCollectMode() == 0 || dMc_c->getCollectMode() == 2)) {
 
             mDoExt_setCurrentHeap(i_Ms->childHeap);
             i_Ms->mMenuProc = MENU_STATE_COLLECT_TO_ITEM_LEFT;
@@ -1203,7 +1203,7 @@ static BOOL dMs_Execute(sub_ms_screen_class* i_Ms) {
 
     } else if (i_Ms->mMenuProc == MENU_STATE_COLLECT_MOVE_TACT) {
         cloth_c->cloth_move();
-        if ((CPad_CHECK_TRIG_START(0) || CPad_CHECK_TRIG_B(0)) && !dMc_c->noteCheck() && (dMc_c->mCollectMode == 0 || dMc_c->mCollectMode == 2)) {
+        if ((CPad_CHECK_TRIG_START(0) || CPad_CHECK_TRIG_B(0)) && !dMc_c->noteCheck() && (dMc_c->getCollectMode() == 0 || dMc_c->getCollectMode() == 2)) {
             cloth_c->alpha_out();
             mDoExt_setCurrentHeap(i_Ms->childHeap);
             i_Ms->mMenuProc = MENU_STATE_COLLECT_CLOSE_TACT;
@@ -1218,7 +1218,7 @@ static BOOL dMs_Execute(sub_ms_screen_class* i_Ms) {
 
     } else if (i_Ms->mMenuProc == MENU_STATE_COLLECT_MOVE_ALT) {
         cloth_c->cloth_move();
-        if (dMc_c->mCollectMode != 5) {
+        if (dMc_c->getCollectMode() != 5) {
             cloth_c->alpha_out();
             mDoExt_setCurrentHeap(i_Ms->childHeap);
             i_Ms->mMenuProc = MENU_STATE_COLLECT_CLOSE_ALT;
@@ -1434,7 +1434,7 @@ static BOOL dMs_Execute(sub_ms_screen_class* i_Ms) {
     }
 
     if (dMc_c) {
-        dMenu_setCollectMode(dMc_c->mCollectMode);
+        dMenu_setCollectMode(dMc_c->getCollectMode());
     } else {
         dMenu_setCollectMode(0);
     }

@@ -17,7 +17,7 @@ public:
     virtual void draw() {}
 
     void alphaChange(fopMsgM_pane_class* pane, float alpha) { pane->mInitAlpha *= alpha; }
-    void getCollectMode() {}
+    u8 getCollectMode() { return mCollectMode; }
     void getNowItem() {}
     void setNowItem(unsigned char) {}
 
