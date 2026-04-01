@@ -20,8 +20,8 @@ public:
 
     u8 getCollectMode() { return mCollectMode; }
 
-    void getNowItem() {}
-    void setNowItem(unsigned char) {}
+    u8 getNowItem() { return mNowItem; }
+    void setNowItem(u8 i_info) { mNowItem = i_info; }
 
     void setArchive(JKRArchive* arc) { mpArc = arc; }
     void setOptionArchive(JKRArchive* arc) { mpOptArc = arc; }
@@ -196,7 +196,7 @@ public:
     /* 0x27E2 */ u16 mTimer;
     /* 0x27E4 */ u8 m27E4[0x27EC - 0x27E4];
     /* 0x27EC */ u8 mTriggerInfo;
-    /* 0x27ED */ u8 m27ED;
+    /* 0x27ED */ u8 mNowItem;
     /* 0x27EE */ u8 mCollectMode;
     /* 0x27EF */ u8 m27EF[0x27F4 - 0x27EF];
 }; // Size: 0x27F4

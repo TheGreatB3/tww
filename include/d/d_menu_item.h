@@ -11,13 +11,14 @@ class J2DPane;
 
 class dMenu_Item_c : public dMenu_base_c {
 public:
-    void alphaChange(fopMsgM_pane_class*, float) {}
     virtual void draw() {}
+
+    void alphaChange(fopMsgM_pane_class*, float) {}
 
     u8 getItemMode() { return mItemMode; }
 
-    void getNowItem() {}
-    void setNowItem(unsigned char) {}
+    u8 getNowItem() { return mNowItem; }
+    void setNowItem(u8 i_info) { mNowItem = i_info; }
 
     void setArchive(JKRArchive* arc) { mpArc = arc; }
     void setFont(JUTFont* font, JUTFont* rfont) {
@@ -113,7 +114,7 @@ public:
     /* 0x23F8 */ u16 mTimer;
     /* 0x23FA */ u8 field_0x23FA[0x23FE - 0x23FA];
     /* 0x23FE */ u8 mItemMode;
-    /* 0x23FF */ u8 field_0x23FF;
+    /* 0x23FF */ u8 mNowItem;
     /* 0x2400 */ u8 padding_0x2400[0x2421 - 0x2400];
     /* 0x2421 */ u8 mTriggerInfo;
     /* 0x2422 */ u8 field_0x2422;

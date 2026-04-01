@@ -226,7 +226,7 @@ void dMs_item_create(sub_ms_screen_class* i_Ms) {
     dMi_c->setFont(fonttype, rfonttype);
     dMi_c->setTextArea(i_Ms->name[0], i_Ms->name[1], i_Ms->note[0], i_Ms->note[1], i_Ms->dummy[0], i_Ms->dummy[1]);
 
-    dMi_c->field_0x23FF = g_dComIfG_gameInfo.play.field_0x4943; // FIXME
+    dMi_c->setNowItem(dComIfGp_getButtonInfo(0));
 
     dMi_c->_create();
 
@@ -264,7 +264,7 @@ void dMs_item_delete(sub_ms_screen_class* i_Ms) {
     }
 
     if (dMi_c != NULL) {
-        g_dComIfG_gameInfo.play.field_0x4943 = dMi_c->field_0x23FF; // FIXME
+        dComIfGp_setButtonInfo(0, dMi_c->getNowItem());
 
         dMi_c->_delete();
         delete dMi_c;
@@ -324,7 +324,7 @@ void dMs_collect_create(sub_ms_screen_class* i_Ms) {
 
     dMc_c->setTextArea(i_Ms->name[0], i_Ms->name[1], i_Ms->note[0], i_Ms->note[1], i_Ms->dummy[0], i_Ms->dummy[1]);
 
-    dMc_c->m27ED = g_dComIfG_gameInfo.play.field_0x4944; // FIXME
+    dMc_c->setNowItem(dComIfGp_getButtonInfo(1));
 
     dMc_c->_create();
 
@@ -387,7 +387,7 @@ void dMs_collect_create2(sub_ms_screen_class* i_Ms) {
 
     dMc_c->setTextArea(i_Ms->name[0], i_Ms->name[1], i_Ms->note[0], i_Ms->note[1], i_Ms->dummy[0], i_Ms->dummy[1]);
 
-    dMc_c->m27ED = g_dComIfG_gameInfo.play.field_0x4944; // FIXME
+    dMc_c->setNowItem(dComIfGp_getButtonInfo(1));
 
     dMc_c->_create3();
 
@@ -425,7 +425,7 @@ void dMs_collect_delete(sub_ms_screen_class* i_Ms) {
     }
 
     if (dMc_c != NULL) {
-        g_dComIfG_gameInfo.play.field_0x4944 = dMc_c->m27ED; // FIXME
+        dComIfGp_setButtonInfo(1, dMc_c->getNowItem());
 
         dMc_c->_delete();
         delete dMc_c;

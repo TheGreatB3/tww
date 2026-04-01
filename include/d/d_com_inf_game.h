@@ -633,6 +633,9 @@ public:
     u8 getButtonMode() { return mButtonMode; }
     void setButtonMode(u8 mode) { mButtonMode = mode; }
 
+    u8 getButtonInfo(int i_screen) { return mButtonInfo[i_screen]; }
+    void setButtonInfo(int i_screen, u8 i_info) { mButtonInfo[i_screen] = i_info; }
+
     char* getInputPassword() { return mInputPassword; }
     void setInputPassword(const char* password) { strcpy(mInputPassword, password); }
 
@@ -768,8 +771,7 @@ public:
     /* 0x4940 */ u8 field_0x4940;
     /* 0x4941 */ u8 mDirection;
     /* 0x4942 */ u8 mButtonMode;
-    /* 0x4943 */ u8 field_0x4943;
-    /* 0x4944 */ u8 field_0x4944;
+    /* 0x4943 */ u8 mButtonInfo[2];
     /* 0x4945 */ u8 mScopeType;
     /* 0x4946 */ u8 mOperateWind;
     /* 0x4947 */ bool mMetronome;
@@ -4203,5 +4205,8 @@ inline void dComIfGp_InputPasswordOpenCancelOff() {
 inline char* dComIfGp_getInputPassword() {
     return g_dComIfG_gameInfo.play.getInputPassword();
 }
+
+inline u8 dComIfGp_getButtonInfo(int i_screen) { return g_dComIfG_gameInfo.play.getButtonInfo(i_screen); }
+inline void dComIfGp_setButtonInfo(int i_screen, u8 i_info) { g_dComIfG_gameInfo.play.setButtonInfo(i_screen, i_info); }
 
 #endif /* D_COM_D_COM_INF_GAME_H */
