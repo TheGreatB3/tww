@@ -963,7 +963,7 @@ static BOOL dMs_Execute(sub_ms_screen_class* i_Ms) {
 
                                             mDoExt_setCurrentHeap(i_Ms->childHeap);
                                             dMs_collect_create(i_Ms);
-                                            dMc_c->m27EC = 2;
+                                            dMc_c->setTriggerInfo(2);
 
                                             if (daPy_getPlayerLinkActorClass()->getTactNormalWait()) {
                                                 i_Ms->mMenuProc = MENU_STATE_COLLECT_OPEN_TACT;
@@ -1109,7 +1109,7 @@ static BOOL dMs_Execute(sub_ms_screen_class* i_Ms) {
             dMs_item_delete(i_Ms);
             dMs_childHeap_freeAll(i_Ms);
             dMs_collect_create(i_Ms);
-            dMc_c->m27EC = 1;
+            dMc_c->setTriggerInfo(1);
         }
 
     } else if (i_Ms->mMenuProc == MENU_STATE_ITEM_TO_COLLECT_RIGHT) {
@@ -1122,7 +1122,7 @@ static BOOL dMs_Execute(sub_ms_screen_class* i_Ms) {
             dMs_item_delete(i_Ms);
             dMs_childHeap_freeAll(i_Ms);
             dMs_collect_create(i_Ms);
-            dMc_c->m27EC = 2;
+            dMc_c->setTriggerInfo(2);
         }
 
     } else if (i_Ms->mMenuProc == MENU_STATE_COLLECT_OPEN_LEFT || i_Ms->mMenuProc == MENU_STATE_COLLECT_OPEN_RIGHT) {
@@ -1173,7 +1173,7 @@ static BOOL dMs_Execute(sub_ms_screen_class* i_Ms) {
             cloth_c->alpha_out();
             mDoExt_setCurrentHeap(i_Ms->childHeap);
             i_Ms->mMenuProc = MENU_STATE_COLLECT_CLOSE;
-            dMc_c->m27EC = 0;
+            dMc_c->setTriggerInfo(0);
             dMc_c->setTimer(10);
             dMenu_setPushMenuButton(0);
             mDoAud_seStart(JA_SE_ITM_MENU_OUT);
@@ -1182,7 +1182,7 @@ static BOOL dMs_Execute(sub_ms_screen_class* i_Ms) {
 
             mDoExt_setCurrentHeap(i_Ms->childHeap);
             i_Ms->mMenuProc = MENU_STATE_COLLECT_TO_ITEM_RIGHT;
-            dMc_c->m27EC = 2;
+            dMc_c->setTriggerInfo(2);
             dMc_c->setTimer(g_menuHIO.field_0x92);
             dMenu_setPushMenuButton(1);
             mDoAud_seStart(JA_SE_ITEM_COL_SW);
@@ -1191,7 +1191,7 @@ static BOOL dMs_Execute(sub_ms_screen_class* i_Ms) {
 
             mDoExt_setCurrentHeap(i_Ms->childHeap);
             i_Ms->mMenuProc = MENU_STATE_COLLECT_TO_ITEM_LEFT;
-            dMc_c->m27EC = 1;
+            dMc_c->setTriggerInfo(1);
             dMc_c->setTimer(g_menuHIO.field_0x92);
             dMenu_setPushMenuButton(1);
             mDoAud_seStart(JA_SE_ITEM_COL_SW);
@@ -1207,7 +1207,7 @@ static BOOL dMs_Execute(sub_ms_screen_class* i_Ms) {
             cloth_c->alpha_out();
             mDoExt_setCurrentHeap(i_Ms->childHeap);
             i_Ms->mMenuProc = MENU_STATE_COLLECT_CLOSE_TACT;
-            dMc_c->m27EC = 0;
+            dMc_c->setTriggerInfo(0);
             dMc_c->setTimer(10);
             dMenu_setPushMenuButton(0);
             mDoAud_seStart(JA_SE_ITM_MENU_OUT);
@@ -1222,7 +1222,7 @@ static BOOL dMs_Execute(sub_ms_screen_class* i_Ms) {
             cloth_c->alpha_out();
             mDoExt_setCurrentHeap(i_Ms->childHeap);
             i_Ms->mMenuProc = MENU_STATE_COLLECT_CLOSE_ALT;
-            dMc_c->m27EC = 0;
+            dMc_c->setTriggerInfo(0);
             dMc_c->setTimer(10);
             dMenu_setPushMenuButton(0);
             mDoAud_seStart(JA_SE_ITM_MENU_OUT);

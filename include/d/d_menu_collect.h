@@ -17,7 +17,9 @@ public:
     virtual void draw() {}
 
     void alphaChange(fopMsgM_pane_class* pane, float alpha) { pane->mInitAlpha *= alpha; }
+
     u8 getCollectMode() { return mCollectMode; }
+
     void getNowItem() {}
     void setNowItem(unsigned char) {}
 
@@ -46,7 +48,8 @@ public:
     }
 
     void setTimer(short timer) { mTimer = timer; }
-    void setTriggerInfo(unsigned char) {}
+
+    void setTriggerInfo(u8 triggerInfo) { mTriggerInfo = triggerInfo; }
 
     void screenSet();
     void initialize();
@@ -192,7 +195,7 @@ public:
     /* 0x27C8 */ u8 m27C8[0x27E2 - 0x27C8];
     /* 0x27E2 */ u16 mTimer;
     /* 0x27E4 */ u8 m27E4[0x27EC - 0x27E4];
-    /* 0x27EC */ u8 m27EC;
+    /* 0x27EC */ u8 mTriggerInfo;
     /* 0x27ED */ u8 m27ED;
     /* 0x27EE */ u8 mCollectMode;
     /* 0x27EF */ u8 m27EF[0x27F4 - 0x27EF];
