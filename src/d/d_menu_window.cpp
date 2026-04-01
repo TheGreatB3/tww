@@ -1134,7 +1134,7 @@ static BOOL dMs_Execute(sub_ms_screen_class* i_Ms) {
 
     } else if (i_Ms->mMenuProc == MENU_STATE_ITEM_MOVE) {
         cloth_c->cloth_move();
-        if ((CPad_CHECK_TRIG_START(0) || CPad_CHECK_TRIG_B(0)) && !dMi_c->noteCheck() && dMi_c->mItemMode == 0 && !dMeter_subWinFlag()) {
+        if ((CPad_CHECK_TRIG_START(0) || CPad_CHECK_TRIG_B(0)) && !dMi_c->noteCheck() && dMi_c->getItemMode() == 0 && !dMeter_subWinFlag()) {
 
             cloth_c->alpha_out();
             mDoExt_setCurrentHeap(i_Ms->childHeap);
@@ -1144,7 +1144,7 @@ static BOOL dMs_Execute(sub_ms_screen_class* i_Ms) {
             dMenu_setPushMenuButton(0);
             mDoAud_seStart(JA_SE_ITM_MENU_OUT);
 
-        } else if (dMs_isPush_R_Button(i_Ms) && !dMi_c->noteCheck() && dMi_c->mItemMode == 0) {
+        } else if (dMs_isPush_R_Button(i_Ms) && !dMi_c->noteCheck() && dMi_c->getItemMode() == 0) {
             mDoExt_setCurrentHeap(i_Ms->childHeap);
             i_Ms->mMenuProc = MENU_STATE_ITEM_TO_COLLECT_RIGHT;
             dMi_c->field_0x2421 = 2;
@@ -1152,7 +1152,7 @@ static BOOL dMs_Execute(sub_ms_screen_class* i_Ms) {
             dMenu_setPushMenuButton(2);
             mDoAud_seStart(JA_SE_ITEM_COL_SW);
 
-        } else if (dMs_isPush_L_Button(i_Ms) && !dMi_c->noteCheck() && dMi_c->mItemMode == 0) {
+        } else if (dMs_isPush_L_Button(i_Ms) && !dMi_c->noteCheck() && dMi_c->getItemMode() == 0) {
 
             mDoExt_setCurrentHeap(i_Ms->childHeap);
             i_Ms->mMenuProc = MENU_STATE_ITEM_TO_COLLECT_LEFT;
@@ -1428,7 +1428,7 @@ static BOOL dMs_Execute(sub_ms_screen_class* i_Ms) {
     }
 
     if (dMi_c) {
-        dMenu_setItemMode(dMi_c->mItemMode);
+        dMenu_setItemMode(dMi_c->getItemMode());
     } else {
         dMenu_setItemMode(0);
     }

@@ -13,15 +13,19 @@ class dMenu_Item_c : public dMenu_base_c {
 public:
     void alphaChange(fopMsgM_pane_class*, float) {}
     virtual void draw() {}
-    void getItemMode() {}
+
+    u8 getItemMode() { return mItemMode; }
+
     void getNowItem() {}
+    void setNowItem(unsigned char) {}
+
     void setArchive(JKRArchive* arc) { mpArc = arc; }
     void setFont(JUTFont* font, JUTFont* rfont) {
         mFont = font;
         mRFont = rfont;
     }
+
     void setItemTexBuffer(int, void*) {}
-    void setNowItem(unsigned char) {}
     void setSubItemTexBuffer(int, void*) {}
     void setTextArea(char* name0, char* name1, char* note0, char* note1, char* dummy0, char* dummy1) {
         name[0] = name0;
