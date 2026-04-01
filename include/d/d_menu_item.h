@@ -27,6 +27,7 @@ public:
 
     void setItemTexBuffer(int, void*) {}
     void setSubItemTexBuffer(int, void*) {}
+
     void setTextArea(char* name0, char* name1, char* note0, char* note1, char* dummy0, char* dummy1) {
         name[0] = name0;
         name[1] = name1;
@@ -35,8 +36,10 @@ public:
         dummy[0] = dummy0;
         dummy[1] = dummy1;
     }
+
     void setTimer(short) {}
-    void setTriggerInfo(unsigned char) {}
+
+    void setTriggerInfo(u8 triggerInfo) { mTriggerInfo = triggerInfo; }
 
     void initialize();
     void screenSet();
@@ -112,7 +115,7 @@ public:
     /* 0x23FE */ u8 mItemMode;
     /* 0x23FF */ u8 field_0x23FF;
     /* 0x2400 */ u8 padding_0x2400[0x2421 - 0x2400];
-    /* 0x2421 */ u8 field_0x2421;
+    /* 0x2421 */ u8 mTriggerInfo;
     /* 0x2422 */ u8 field_0x2422;
     /* 0x2423 */ u8 field_0x2423;
 }; // Size: 0x2424
