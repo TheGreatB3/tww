@@ -37,7 +37,7 @@ public:
         dummy[1] = dummy1;
     }
 
-    void setTimer(short) {}
+    void setTimer(s16 timer) { mTimer = timer; }
 
     void setTriggerInfo(u8 triggerInfo) { mTriggerInfo = triggerInfo; }
 
@@ -110,7 +110,7 @@ public:
     /* 0x23E0 */ char* name[2];
     /* 0x23E8 */ char* note[2];
     /* 0x23F0 */ char* dummy[2];
-    /* 0x23F8 */ u16 field_0x23F8;
+    /* 0x23F8 */ u16 mTimer;
     /* 0x23FA */ u8 field_0x23FA[0x23FE - 0x23FA];
     /* 0x23FE */ u8 mItemMode;
     /* 0x23FF */ u8 field_0x23FF;
